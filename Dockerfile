@@ -3,6 +3,7 @@ LABEL maintainer="Betacloud Solutions GmbH (https://www.betacloud-solutions.de)"
 
 ARG VERSION
 ENV VERSION ${VERSION:-latest}
+ENV MANAGER_VERSION ${VERSION:-latest}
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -37,15 +38,15 @@ RUN mkdir -p /ansible/roles /ansible/secrets /opt/configuration \
     && ( cd /cfg-master; MANAGER_VERSION=$VERSION gilt overlay ) \
     && cp /cfg-master/environments/manager/requirements.yml /ansible \
     && pip3 install -r /cfg-master/environments/manager/requirements.txt \
-    && ansible-galaxy install -r /ansible/requirements.yml -p /ansible/roles \
-    && rm -rf /cfg-master
+    && ansible-galaxy install -r /ansible/requirements.yml -p /ansible/roles
 
 RUN apt clean \
     && rm -rf \
       /var/lib/apt/lists/* \
       /var/tmp/*  \
       /usr/share/doc/* \
-      /usr/share/man/*
+      /usr/share/man/* \
+      /cfg-master
 
 USER dragon
 WORKDIR /home/dragon
