@@ -20,7 +20,6 @@ RUN apt update \
         bash \
         git \
         locales \
-        python-minimal \
         python3-pip
 
 RUN groupadd -g $GROUP_ID dragon \
