@@ -45,7 +45,8 @@ RUN apt clean \
       /var/tmp/*  \
       /usr/share/doc/* \
       /usr/share/man/* \
-      /cfg-master
+      /cfg-master \
+      /root/.gilt
 
 USER dragon
 WORKDIR /home/dragon
