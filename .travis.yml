@@ -9,6 +9,7 @@ env:
     - REPOSITORY=osism/installer
   matrix:
     - VERSION=latest
+    - VERSION=2019.4.0
 
 script:
   - bash scripts/build.sh
