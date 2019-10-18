@@ -12,15 +12,18 @@ ENV GROUP_ID ${GROUP_ID:-45000}
 
 USER root
 
-ADD files/run.sh /run.sh
+COPY files/run.sh /run.sh
 
-RUN apt update \
-    && apt upgrade -y \
-    && apt install -y \
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
         bash \
         git \
         locales \
-        python3-pip
+        python3-dev \
+        python3-pip \
+        python3-setuptools \
+        python3-wheel \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g $GROUP_ID dragon \
     && useradd -g dragon -u $USER_ID -m -d /home/dragon dragon
@@ -39,9 +42,8 @@ RUN mkdir -p /ansible/roles /ansible/secrets /opt/configuration \
     && pip3 install -r /cfg-master/environments/manager/requirements.txt \
     && ansible-galaxy install -r /ansible/requirements.yml -p /ansible/roles
 
-RUN apt clean \
+RUN apt-get clean \
     && rm -rf \
-      /var/lib/apt/lists/* \
       /var/tmp/*  \
       /usr/share/doc/* \
       /usr/share/man/* \
