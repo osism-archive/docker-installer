@@ -36,10 +36,10 @@ ENV LC_ALL en_US.UTF-8
 RUN mkdir -p /ansible/roles /ansible/secrets /opt/configuration \
     && chown -R dragon: /ansible \
     && git clone https://github.com/osism/cfg-master \
-    && pip3 install -r /cfg-master/requirements.txt \
+    && pip3 install --no-cache-dir -r /cfg-master/requirements.txt \
     && ( cd /cfg-master; MANAGER_VERSION=$VERSION gilt overlay ) \
     && cp /cfg-master/environments/manager/requirements.yml /ansible \
-    && pip3 install -r /cfg-master/environments/manager/requirements.txt \
+    && pip3 install --no-cache-dir -r /cfg-master/environments/manager/requirements.txt \
     && ansible-galaxy install -r /ansible/requirements.yml -p /ansible/roles
 
 RUN apt-get clean \
