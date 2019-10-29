@@ -15,6 +15,8 @@ COPY files/run.sh /run.sh
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         bash \
+        bash-completion \
+        dumb-init \
         git \
         locales \
         python3-dev \
