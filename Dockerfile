@@ -2,8 +2,6 @@ FROM ubuntu:18.04
 LABEL maintainer="Betacloud Solutions GmbH (https://www.betacloud-solutions.de)"
 
 ARG VERSION
-ENV VERSION ${VERSION:-latest}
-ENV MANAGER_VERSION ${VERSION:-latest}
 
 ENV DEBIAN_FRONTEND noninteractive
 
