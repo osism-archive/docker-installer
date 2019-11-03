@@ -1,2 +1,5 @@
 ---
 docker_image_name: installer
+versions:
+ - latest
+ - 2019.4.0
