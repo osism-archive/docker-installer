@@ -3,10 +3,10 @@ LABEL maintainer="Betacloud Solutions GmbH (https://www.betacloud-solutions.de)"
 
 ARG VERSION
 
-ENV DEBIAN_FRONTEND noninteractive
+ARG USER_ID=45000
+ARG GROUP_ID=45000
 
-ENV USER_ID ${USER_ID:-45000}
-ENV GROUP_ID ${GROUP_ID:-45000}
+ENV DEBIAN_FRONTEND noninteractive
 
 USER root
 
