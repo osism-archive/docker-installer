@@ -1,5 +1,4 @@
 FROM ubuntu:18.04
-LABEL maintainer="Betacloud Solutions GmbH (https://www.betacloud-solutions.de)"
 
 ARG VERSION
 
@@ -56,3 +55,9 @@ WORKDIR /home/dragon
 VOLUME ["/opt/configuration"]
 
 ENTRYPOINT ["/run.sh"]
+
+LABEL "org.opencontainers.image.documentation"="https://docs.osism.io" \
+      "org.opencontainers.image.licenses"="ASL 2.0" \
+      "org.opencontainers.image.source"="https://github.com/osism/docker-installer" \
+      "org.opencontainers.image.url"="https://www.osism.de" \
+      "org.opencontainers.image.vendor"="Betacloud Solutions GmbH"
